@@ -1,0 +1,32 @@
+/*@keyframes point-drop
+{
+    from {
+        top: -4%;
+    }
+    to {
+        top: 110%;
+    }
+}
+
+#point-icon-container {
+    animation: point-drop 5s;
+    position: absolute;
+    margin-left: 50%;
+    background-color: blue;
+    height: 20px;
+    width: 20px;
+}*/
+
+#gameboard{
+  width: 1280px;
+  height: 550px;
+  position: relative;
+  background-color: black;
+}
+
+#point-grabber{
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  background-color: #099FFF;
+}

@@ -1,0 +1,31 @@
+//moves box across the screen until 100px
+function pointGrab() {
+  var pointGrabber = document.getElementById("point-grabber");
+  var position = 0;
+  var id = setInterval(function(){
+    if (position == 1000) {
+      clearInterval(id);
+    } else {
+      position++;
+      pointGrabber.style.left = position + 'px';
+      // pointGrabber.style.left = position + 'px';
+      // pointGrabber.style.right = position + 'px';
+    }
+  }, 5);
+}
+
+//attempts to move box on left and right arrow press
+// window.addEventListener("keydown",function(event){
+//   position = 0;
+//   if(event.keyCode===37){
+//     var pointGrabber = document.getElementById("point-grabber");
+//     pointGrabber.style.left.backgroundcolor = "red"
+//     // pointGrabber.style.left = parseInt(pointGrabber.style.left) - 100 + 'px';
+//     console.log("left");
+//   }else if(event.keyCode===39){
+//     var pointGrabber = document.getElementById("point-grabber");
+//     pointGrabber.style.left.backgroundcolor = "purple"
+//     // pointGrabber.style.left = parseInt(pointGrabber.style.left) + 100 + 'px';
+//     console.log("right");
+//   }
+// });
