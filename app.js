@@ -15,7 +15,7 @@ window.addEventListener("keydown",function(event){
     var pointGrabber = document.getElementById("point-grabber");
     pointGrabber.setAttribute('style','margin-left:'+ position + "px")
   }else if(event.keyCode===39){
-    width = playerContainer.offsetWidth - 50
+    width = playerContainer.offsetWidth - 60
     if(position<width){
       position = position+moveOver;
       var pointGrabber = document.getElementById("point-grabber");
