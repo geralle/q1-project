@@ -27,7 +27,7 @@
         top: -2%;
     }
     to {
-        top: 96%;
+        top: 95%;
     }
 }
 
@@ -54,7 +54,8 @@ $mobile: " (max-width: 770px)";
 }
 
 @media #{$mobile} {
-  #point-grabber{
+  #usr{
+    background-color: red;
     height: 20px;
     width: 30px;
   }

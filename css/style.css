@@ -7,7 +7,7 @@
   height: 100%; }
 
 .column {
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   display: flex;
   justify-content: center; }
 
@@ -21,7 +21,7 @@
   from {
     top: -2%; }
   to {
-    top: 96%; } }
+    top: 95%; } }
 
 @media (max-width: 770px) {
   .desktop {
@@ -41,6 +41,7 @@
   background-color: #099FFF; }
 
 @media (max-width: 770px) {
-  #point-grabber {
+  #usr {
+    background-color: red;
     height: 20px;
     width: 30px; } }

@@ -1,7 +1,6 @@
 var position = 0;
 var moveOver = 30;
-var bombId = 0;
-var ptsDisplayed = [];
+var bombsDisplayed = [];
 var gameOn = true;
 var gameTime = 1000;
 
@@ -36,11 +35,11 @@ window.addEventListener("keydown",function(event){
 });
 
 function bombDrop(){
-  bombId++;
   var randomColumn = Math.floor(Math.random() * 12)+1;
   var column = document.getElementById("column-"+randomColumn);
   var bombIcon = document.createElement('div');
-  bombIcon.setAttribute('id','bomb-' + bombId)
+  bombsDisplayed.push(bombIcon)
+  var bombId = bombsDisplayed.length;
   bombIcon.setAttribute('class','bombs')
   bombIcon.setAttribute('style',
       `animation: bomb-drop 5s;
@@ -49,30 +48,35 @@ function bombDrop(){
       margin: 0;
       padding: 0;`)
   bombIcon.innerText = "💣";
+  bombIcon.setAttribute('id','bomb-' + bombId);
   column.append(bombIcon);
   var bombIcon = document.getElementsByClassName("bombs")
-  ptsDisplayed.push(bombIcon)
-  var timeout = setTimeout(function(){
-    // ptsDisplayed.shift()
-    var explodeColumn = $(column)[0].id
-    var explodePosition = $(column).offset().left
-    var user = document.getElementById("usr")
-    var userPosition = $(user).offset().left
-    // console.log(explodePosition)
-    // console.log(userPosition)
-    var blastDiff = explodePosition-userPosition
-    var inverseBlastDiff = 0;
-    if(Math.sign(blastDiff) === -1){
-      inverseBlastDiff = blastDiff * -1;
-    }
-    if(blastDiff>=60 || inverseBlastDiff>=60){
-      console.log("safe")
-    }else{
-      console.log("dead")
-    }
+  setTimeout(function(){
+    var explodeColumn = $(column)
+    var explodeId = "bomb-"+bombId
+    var bombBlast = document.getElementById(explodeId)
+    console.log(bombBlast)
+    collision(column);
+    // bombBlast.innerText = "💥"
+    // setTimeout(function(){
+    //   bombsDisplayed.shift()
+    //   bombBlast.parentNode.removeChild(bombBlast)
+    // },200)
   },5000);
 }
 
-function collision(explodeColumn){
-  console.log(explodeColumn)
+function collision(column){
+  var explodePosition = $(column).offset().left
+  var user = document.getElementById("usr")
+  var userPosition = $(user).offset().left
+  var blastDiff = explodePosition-userPosition
+  var inverseBlastDiff = 0;
+  if(Math.sign(blastDiff) === -1){
+    inverseBlastDiff = blastDiff * -1;
+  }
+  if(blastDiff>=60 || inverseBlastDiff>=60){
+    console.log("safe")
+  }else{
+    console.log("dead")
+  }
 }

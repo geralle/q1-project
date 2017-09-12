@@ -1,3 +1,19 @@
+// bombBlast.innerText = "💥"
+// setTimeout(function(){
+//   var explodeId = "bomb-"+bombId
+//   var bombBlast = document.getElementById(explodeId)
+//   bombBlast.innerText = "💥"
+// },4500)
+
+
+
+
+
+
+
+
+
+
 // function collision($bombs, $detector) {
 //   var x1 = $bombs.offset().left;
 //   var y1 = $bombs.offset().top;
