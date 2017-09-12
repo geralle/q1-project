@@ -7,11 +7,40 @@
 
 
 
+133.4296875
 
 
 
-
-
+function bombDrop(){
+  var randomColumn = Math.floor(Math.random() * 12)+1;
+  var column = document.getElementById("column-"+1);
+  var bombIcon = document.createElement('div');
+  bombsDisplayed.push(bombIcon)
+  var bombId = bombsDisplayed.length;
+  bombIcon.setAttribute('class','bombs')
+  bombIcon.setAttribute('style',
+      `animation: bomb-drop 5s;
+      position: absolute;
+      font-size: 30px;
+      margin: 0;
+      padding: 0;`)
+  bombIcon.innerText = "💣";
+  bombIcon.setAttribute('id','bomb-' + bombId);
+  column.append(bombIcon);
+  var bombIcon = document.getElementsByClassName("bombs")
+  setTimeout(function(){
+    var explodeColumn = $(column)
+    var explodeId = "bomb-"+bombId
+    var bombBlast = document.getElementById(explodeId)
+    // console.log(bombBlast);
+    console.log(collision(column));
+    // bombBlast.innerText = "💥"
+    // setTimeout(function(){
+    //   bombsDisplayed.shift()
+    //   bombBlast.parentNode.removeChild(bombBlast)
+    // },200)
+  },5000);
+}
 
 
 // function collision($bombs, $detector) {

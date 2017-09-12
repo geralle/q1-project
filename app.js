@@ -2,18 +2,20 @@ var position = 0;
 var moveOver = 30;
 var bombsDisplayed = [];
 var gameOn = true;
-var gameTime = 1000;
+var gameTime = 200;
 
 startButton = document.getElementById('play-button')
 startButton.addEventListener('click',function(event){
   event.preventDefault()
   var userScore = 0
+  // animation();
   // bombDrop();
   if(gameOn===true){
     setInterval(function(){
       userScore++;
       $('#result').text(userScore)
-      bombDrop();
+      // bombDrop();
+      animation();
     },gameTime)
   }
 })
@@ -34,35 +36,36 @@ window.addEventListener("keydown",function(event){
   }
 });
 
-function bombDrop(){
+function animation(){
   var randomColumn = Math.floor(Math.random() * 12)+1;
   var column = document.getElementById("column-"+randomColumn);
   var bombIcon = document.createElement('div');
   bombsDisplayed.push(bombIcon)
-  var bombId = bombsDisplayed.length;
+  var bombNum = bombsDisplayed.length;
   bombIcon.setAttribute('class','bombs')
   bombIcon.setAttribute('style',
-      `animation: bomb-drop 5s;
-      position: absolute;
+      `position: absolute;
       font-size: 30px;
       margin: 0;
       padding: 0;`)
   bombIcon.innerText = "💣";
-  bombIcon.setAttribute('id','bomb-' + bombId);
+  var bombId = 'bomb-' + bombNum
+  bombIcon.setAttribute('id', bombId);
   column.append(bombIcon);
-  var bombIcon = document.getElementsByClassName("bombs")
-  setTimeout(function(){
+  var explodeId = document.getElementById(bombId)
+  var gameboardHeight = $(document.getElementById("gameboard-columns")).height()
+  $(explodeId).animate({
+    top:gameboardHeight-40
+  },3000, function() {
+    // Animation complete.
     var explodeColumn = $(column)
-    var explodeId = "bomb-"+bombId
-    var bombBlast = document.getElementById(explodeId)
-    console.log(bombBlast)
-    collision(column);
-    // bombBlast.innerText = "💥"
-    // setTimeout(function(){
-    //   bombsDisplayed.shift()
-    //   bombBlast.parentNode.removeChild(bombBlast)
-    // },200)
-  },5000);
+    var bombBlast = document.getElementById(bombId)
+    bombBlast.innerText = "💥"
+    console.log(collision(column));
+    setTimeout(function(){
+      bombBlast.innerText = ""
+    },200)
+  });
 }
 
 function collision(column){
@@ -75,8 +78,8 @@ function collision(column){
     inverseBlastDiff = blastDiff * -1;
   }
   if(blastDiff>=60 || inverseBlastDiff>=60){
-    console.log("safe")
+    return "safe"
   }else{
-    console.log("dead")
+    return "dead"
   }
 }
