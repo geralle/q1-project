@@ -1,6 +1,9 @@
 #head-container{
   border: 4px solid black;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #gameboard-columns{
@@ -9,7 +12,7 @@
 }
 
 .column{
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   display: flex;
   justify-content: center;
 }
@@ -38,6 +41,14 @@ $mobile: " (max-width: 770px)";
   }
 }
 
+@media #{$mobile} {
+  #usr{
+    background-color: red;
+    height: 20px;
+    width: 30px;
+  }
+}
+
 #player-container {
   /*border: 4px solid black;*/
   height: 50px;
@@ -53,10 +64,7 @@ $mobile: " (max-width: 770px)";
   background-color: #099FFF;
 }
 
-@media #{$mobile} {
-  #usr{
-    background-color: red;
-    height: 20px;
-    width: 30px;
-  }
+#player-score{
+  /*background-color: black;*/
+
 }

@@ -9,7 +9,15 @@
 
 133.4296875
 
-
+$(document.getElementById("gameboard-columns"))
+gameboard = $(document.getElementById("gameboard"))
+clearGameboard = gameboardColumns.hide()
+var playerScore = document.createElement('div');
+playerScore.setAttribute('id','player-score')
+playerScore.setAttribute('class','row')
+playerScore.innerText = userScore
+gameboard.append(playerScore)
+console.log("new page")
 
 function bombDrop(){
   var randomColumn = Math.floor(Math.random() * 12)+1;

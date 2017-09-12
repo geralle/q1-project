@@ -2,23 +2,25 @@ var position = 0;
 var moveOver = 30;
 var bombsDisplayed = [];
 var gameOn = true;
-var gameTime = 200;
+var gameTime = 175;
 
+
+var userScore = 0;
 startButton = document.getElementById('play-button')
 startButton.addEventListener('click',function(event){
   event.preventDefault()
-  var userScore = 0
+  console.log("clicked")
   // animation();
-  // bombDrop();
   if(gameOn===true){
-    setInterval(function(){
+    gameOn=false;
+    gameInterval = setInterval(function(){
       userScore++;
       $('#result').text(userScore)
-      // bombDrop();
       animation();
     },gameTime)
   }
 })
+
 
 playerContainer = document.getElementById('player-container')
 window.addEventListener("keydown",function(event){
@@ -56,7 +58,7 @@ function animation(){
   var gameboardHeight = $(document.getElementById("gameboard-columns")).height()
   $(explodeId).animate({
     top:gameboardHeight-40
-  },3000, function() {
+  },2500, function() {
     // Animation complete.
     var explodeColumn = $(column)
     var bombBlast = document.getElementById(bombId)
@@ -77,9 +79,15 @@ function collision(column){
   if(Math.sign(blastDiff) === -1){
     inverseBlastDiff = blastDiff * -1;
   }
-  if(blastDiff>=60 || inverseBlastDiff>=60){
+  // needs to be changed for mobile
+  if(blastDiff>=65 || inverseBlastDiff>=65){
     return "safe"
   }else{
-    return "dead"
+    gameOver()
   }
+}
+
+function gameOver(){
+  clearInterval(gameInterval)
+  window.open('scoreboard.html?a='+userScore,"_self")
 }
