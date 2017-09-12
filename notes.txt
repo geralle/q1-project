@@ -1,3 +1,99 @@
+// function collision($bombs, $detector) {
+//   var x1 = $bombs.offset().left;
+//   var y1 = $bombs.offset().top;
+//   var h1 = $bombs.outerHeight(true);
+//   var w1 = $bombs.outerWidth(true);
+//   var b1 = y1 + h1;
+//   var r1 = x1 + w1;
+//   var x2 = $detector.offset().left;
+//   var y2 = $detector.offset().top;
+//   var h2 = $detector.outerHeight(true);
+//   var w2 = $detector.outerWidth(true);
+//   var b2 = y2 + h2;
+//   var r2 = x2 + w2;
+//
+//   if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+//     return false
+//   }else{
+//     return true
+//   }
+// }
+
+// For: if $bombs[i] collision player container return true
+//   remove bomb
+//    if $bombs[i] collision with paddle
+//     game over
+
+// window.setInterval(function() {
+//   if(ptsDisplayed.length!=0){
+//     var bombsCounter = $('.bombs')
+//     for(var i=0;i<bombsCounter.length;i++){
+//       var bombMiss = collision($(bombsCounter[i]), $('#player-container'));
+//       if(bombMiss===true){
+//         var bombBlast = bombsCounter[i]
+//         bombBlast.parentNode.removeChild(bombBlast)
+//       }
+//       var bombHit = collision($(bombsCounter[i]), $('#usr'));
+//       console.log(bombHit)
+//       // if(bombHit===true){
+//       //   console.log("HIT")
+//       // }
+//     }
+//   }
+// }, 500);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var containerDetect = collision(pointsCounter, $('#player-container'));
+if(containerDetect===true){
+  var grabberDetect = collision(pointsCounter,$('#point-grabber'));
+    if(grabberDetect===true){
+      // var score = "1"
+      // playerStatus.push(score)
+      // console.log(playerStatus)
+      console.log("score")
+    }else{
+      // var gameover = "0"
+      // playerStatus.push(gameover)
+      // console.log(playerStatus)
+      console.log("nope")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// function gameOver(){
+//   each point inside of ptsDisplayed
+//   for each check if theyre inside player container
+//   if they are / check if theyre touching the paddle
+//   if they are / add a point
+//   else game over
+// }
+
+
 //moves box across the screen until 100px
 function pointGrab() {
   var pointGrabber = document.getElementById("point-grabber");

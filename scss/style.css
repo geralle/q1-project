@@ -17,17 +17,17 @@
 #gameboard{
   /*border: 4px solid green;*/
   height: 450px;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-@keyframes point-drop
+@keyframes bomb-drop
 {
     from {
         top: -2%;
     }
     to {
-        top: 105%;
+        top: 96%;
     }
 }
 
@@ -39,16 +39,17 @@ $mobile: " (max-width: 770px)";
 }
 
 #player-container {
-  border: 4px solid black;
+  /*border: 4px solid black;*/
   height: 50px;
-  display: flex;
-  align-items: center;
+  /*display: flex;
+  align-items: center;*/
 }
 
-#point-grabber{
-  border: 2px solid green;
+#usr{
+  /*border: 2px solid green;*/
+  margin: -20px 0 0 0;
   height: 20px;
-  width: 55px;
+  width: 95px;
   background-color: #099FFF;
 }
 
