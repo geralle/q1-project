@@ -2,15 +2,13 @@ var position = 0;
 var moveOver = 40;
 var bombsDisplayed = [];
 var gameOn = true;
-var gameTime = 175;
-var blastZone = 50;
-
+var blastZone = 63;
 var userScore = 0;
+var gameTime = 155;
+
 startButton = document.getElementById('play-button')
 startButton.addEventListener('click',function(event){
   event.preventDefault()
-  console.log("clicked")
-  // animation();
   if(gameOn===true){
     gameOn=false;
     gameInterval = setInterval(function(){
@@ -56,16 +54,15 @@ function animation(){
   var explodeId = document.getElementById(bombId)
   var gameboardHeight = $(document.getElementById("gameboard-columns")).height()
   $(explodeId).animate({
-    top:gameboardHeight-40
-  },2300, function() {
-    // Animation complete.
+    top:gameboardHeight-53
+  },2100, function() {
     var explodeColumn = $(column)
     var bombBlast = document.getElementById(bombId)
     bombBlast.innerText = "💥"
-    console.log(collision(column));
+    collision(column)
     setTimeout(function(){
       bombBlast.innerText = ""
-    },200)
+    },78)
   });
 }
 

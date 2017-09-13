@@ -1,6 +1,12 @@
 var scoreSrc = window.location.href
 var regex = /=(.+)/;
-var userScore = regex.exec(scoreSrc)[1];
+var userScoreArr = regex.exec(scoreSrc);
+console.log(userScoreArr)
+if(userScoreArr===null){
+  userScore = 0
+}else{
+  var userScore = userScoreArr[1]
+}
 $('#result').text(userScore)
 var apiUrl = `https://galvanize-leader-board.herokuapp.com/api/v1/leader-board`
 var game = "underAttack";
@@ -79,8 +85,6 @@ function checkScores(userScore){
     }
     if(scoreboard != 0){
       openScoreForm()
-    }else{
-      console.log("Play Again")
     }
   })
 }
@@ -128,6 +132,9 @@ function openScoreForm(){
     postHighScore(playersInputName)
     $(form).hide()
     highScoreHeader.innerText = "Congrats " + playersInputName + "!"
+    setTimeout(function(){
+      window.open('scoreboard.html',"_self")
+    },900)
   })
 }
 
