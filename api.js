@@ -1,7 +1,7 @@
 var scoreSrc = window.location.href
 var regex = /=(.+)/;
-var userScore = regex.exec(scoreSrc);
-$('#result').text(userScore[1])
+var userScore = regex.exec(scoreSrc)[1];
+$('#result').text(userScore)
 var apiUrl = `https://galvanize-leader-board.herokuapp.com/api/v1/leader-board`
 var game = "TRVA";
 var scoresArr = [];
@@ -78,16 +78,57 @@ function checkScores(userScore){
       }
     }
     if(scoreboard != 0){
-      console.log(scoreboard)
+      openScoreForm()
     }else{
       console.log("Play Again")
     }
   })
 }
 
-function postScore(){
+function openScoreForm(){
+  var leaderboard = document.getElementById('leaderboard')
+  var newScoreDiv = document.createElement('div')
+  newScoreDiv.setAttribute('id','new-high-score')
+  leaderboard.append(newScoreDiv)
 
+  var highScoreHeader = document.createElement('h3')
+  highScoreHeader.setAttribute('id','high-score-header')
+  highScoreHeader.innerText = "New High Score!"
+  newScoreDiv.append(highScoreHeader)
+
+  var highScoreForm = document.createElement('form')
+  highScoreForm.setAttribute('id','high-score-form')
+  newScoreDiv.append(highScoreForm)
+
+  var userNameInput = document.createElement('div')
+  userNameInput.setAttribute('id','user-name-input')
+  highScoreForm.append(userNameInput)
+
+  var userInput = document.createElement('input')
+  userInput.setAttribute('type','text')
+  userInput.setAttribute('placeholder','Enter your name')
+  userInput.setAttribute('name','user-name')
+  userNameInput.append(userInput)
+
+  var userFormScore = document.createElement('div')
+  userFormScore.setAttribute('id','user-score')
+  userFormScore.innerText = userScore
+  highScoreForm.append(userFormScore)
+
+  var formButton = document.createElement('button')
+  formButton.setAttribute('id','submit-button')
+  formButton.innerText = "Submit"
+  highScoreForm.append(formButton)
+
+  var form = document.getElementById('high-score-form')
+  var formSubmit = document.getElementById("submit-button")
+  form.addEventListener('submit',function(event){
+    event.preventDefault()
+    playersInputName = event.target.elements["user-name"].value
+    $(form).hide()
+    highScoreHeader.innerText = "Congrats " + playersInputName + "!"
+  })
 }
 
 showLeaderboard()
-checkScores(100)
+checkScores(280)
