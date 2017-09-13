@@ -29,15 +29,6 @@
   to {
     top: 95%; } }
 
-@media (max-width: 770px) {
-  .desktop {
-    display: none; } }
-
-@media (max-width: 770px) {
-  #usr {
-    margin: -112px 0 0 0;
-    font-size: 30px; } }
-
 #player-container {
   height: 50px; }
 
@@ -49,8 +40,23 @@
 }*/
 #usr {
   /*border: 2px solid green;*/
-  margin: -112px 0 0 0;
+  margin: -130px 0 -30px 0;
   font-size: 95px; }
+
+#game-floor {
+  height: 20px;
+  width: 99.3%;
+  background-color: lightblue;
+  margin: -47px 0 0 4px; }
+
+@media (max-width: 770px) {
+  .desktop {
+    display: none; } }
+
+@media (max-width: 770px) {
+  #usr {
+    margin: -112px 0 0 0;
+    font-size: 30px; } }
 
 /*LEADERBOARD*/
 #high-scores {

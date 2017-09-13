@@ -1,9 +1,9 @@
 var position = 0;
-var moveOver = 30;
+var moveOver = 40;
 var bombsDisplayed = [];
 var gameOn = true;
 var gameTime = 175;
-var blastZone = 66;
+var blastZone = 50;
 
 var userScore = 0;
 startButton = document.getElementById('play-button')
