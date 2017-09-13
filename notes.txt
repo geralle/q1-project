@@ -1,3 +1,15 @@
+for(var j=0;j<Object.keys(highScores[i]).length;j++){
+  leaderboard[Object.keys(highScores[i])[j]]=Object.values(highScores[i])[j]
+}
+leaderboardArr.push(leaderboard)
+console.log(leaderboardArr)
+
+
+
+
+
+
+
 // bombBlast.innerText = "💥"
 // setTimeout(function(){
 //   var explodeId = "bomb-"+bombId

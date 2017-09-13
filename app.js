@@ -3,7 +3,7 @@ var moveOver = 30;
 var bombsDisplayed = [];
 var gameOn = true;
 var gameTime = 175;
-
+var blastZone = 66;
 
 var userScore = 0;
 startButton = document.getElementById('play-button')
@@ -20,7 +20,6 @@ startButton.addEventListener('click',function(event){
     },gameTime)
   }
 })
-
 
 playerContainer = document.getElementById('player-container')
 window.addEventListener("keydown",function(event){
@@ -58,7 +57,7 @@ function animation(){
   var gameboardHeight = $(document.getElementById("gameboard-columns")).height()
   $(explodeId).animate({
     top:gameboardHeight-40
-  },2500, function() {
+  },2300, function() {
     // Animation complete.
     var explodeColumn = $(column)
     var bombBlast = document.getElementById(bombId)
@@ -80,7 +79,7 @@ function collision(column){
     inverseBlastDiff = blastDiff * -1;
   }
   // needs to be changed for mobile
-  if(blastDiff>=65 || inverseBlastDiff>=65){
+  if(blastDiff>=blastZone || inverseBlastDiff>=blastZone){
     return "safe"
   }else{
     gameOver()
