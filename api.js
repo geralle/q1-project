@@ -2,8 +2,9 @@ var scoreSrc = window.location.href
 var regex = /=(.+)/;
 var userScore = regex.exec(scoreSrc);
 $('#result').text(userScore[1])
-url = `https://galvanize-leader-board.herokuapp.com/api/v1/leader-board`
-var game = "Deadpool"
+var apiUrl = `https://galvanize-leader-board.herokuapp.com/api/v1/leader-board`
+var game = "TRVA";
+var scoresArr = [];
 
 var restartButton = document.getElementById('replay-button')
 restartButton.addEventListener('click',function(event){
@@ -16,52 +17,71 @@ function sortScores(a,b) {
 }
 
 function getHighScores(){
-  fetch(url).then(function(response){
+  return fetch(apiUrl).then(function(response){
     return response.json().then(function(highScores){
       var sortedLeaderboard = highScores.sort(sortScores);
       for(var i=0;i<sortedLeaderboard.length;i++){
         if(sortedLeaderboard[i].game_name===game){
           var gameNameScores = highScores[i]
-          var leaderboardNames = gameNameScores.player_name
-          var leaderboardScores = gameNameScores.score
-          var highScoresContainer = document.getElementById('high-scores')
-          var playerScoreContainer = document.createElement('div')
-          playerScoreContainer.setAttribute('id','player-score-container')
-          var nameDiv = document.createElement('div')
-          var scoreDiv = document.createElement('div')
-          nameDiv.setAttribute('class','players-names')
-          scoreDiv.setAttribute('class','player-scores')
-          nameDiv.innerText = leaderboardNames
-          scoreDiv.innerText = leaderboardScores
-          highScoresContainer.append(playerScoreContainer)
-          playerScoreContainer.append(nameDiv)
-          playerScoreContainer.append(scoreDiv)
+          scoresArr.push(gameNameScores)
         }
       }
+      return scoresArr
     })
   })
 }
 
-function checkName(playersName){
-  var names = []
-  fetch(url).then(function(response){
-    return response.json().then(function(highScores){
-      var sortedLeaderboard = highScores.sort(sortScores);
-      for(var i=0;i<sortedLeaderboard.length;i++){
-        if(sortedLeaderboard[i].game_name===game){
-          var gameScores = highScores[i]
-          var leaderboardNames = gameScores.player_name
-          for(var j=0;j<leaderboardNames.length;j++){
-            names.push(leaderboardNames)
-          }
-        }
+function showLeaderboard(){
+  return getHighScores().then(function(scoresArr){
+    for(var i=0;i<5;i++){
+      var topScores = scoresArr[i]
+      var ranking = i+1
+      var leaderboardNames = topScores.player_name
+      var leaderboardScores = topScores.score
+
+      var highScoresContainer = document.getElementById('high-scores')
+
+      var scoreRow = document.createElement('div')
+      scoreRow.setAttribute('class','row')
+      scoreRow.setAttribute('id','score-row')
+      highScoresContainer.append(scoreRow)
+
+      var rankDiv = document.createElement('div')
+      rankDiv.setAttribute('class','column col-1')
+      rankDiv.setAttribute('id','players-ranking')
+      rankDiv.innerText = ranking
+      scoreRow.append(rankDiv)
+
+      var nameDiv = document.createElement('div')
+      nameDiv.setAttribute('class','column col-4')
+      nameDiv.setAttribute('id','players-name')
+      nameDiv.innerText = leaderboardNames
+      scoreRow.append(nameDiv)
+
+      var scoreDiv = document.createElement('div')
+      scoreDiv.setAttribute('class','column col-2')
+      scoreDiv.setAttribute('id','players-score')
+      scoreDiv.innerText = leaderboardScores
+      scoreRow.append(scoreDiv)
+    }
+    return leaderboardScores
+  })
+}
+
+function checkScores(userScore){
+  var scoreboard = 0
+  return getHighScores().then(function(leaderboard){
+    for(var i=0;i<5;i++){
+      // console.log(foo[0].score)
+      if(userScore>leaderboard[i].score){
+        scoreboard++
       }
-      for(var x=0;x<names.length;x++){
-        if(playersName === names[x]){
-          return true
-        }
-      }
-    })
+    }
+    if(scoreboard != 0){
+      console.log(scoreboard)
+    }else{
+      console.log("Play Again")
+    }
   })
 }
 
@@ -69,5 +89,5 @@ function postScore(){
 
 }
 
-// checkName('Will')
-getHighScores()
+showLeaderboard()
+checkScores(100)
