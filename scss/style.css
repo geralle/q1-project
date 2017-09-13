@@ -84,6 +84,11 @@ $mobile: " (max-width: 770px)";
 
 #leaderboard{
   padding: 0;
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  width: 100%;
+  flex-direction: column;
 }
 
 #player-score-container{
@@ -93,4 +98,10 @@ $mobile: " (max-width: 770px)";
 
 .players-names{
   margin-right: 10px;
+}
+
+#column-header, #score-row{
+  /*border: 2px solid black;*/
+  width: 100%;
+  margin: 0 0 0 0;
 }

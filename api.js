@@ -3,7 +3,7 @@ var regex = /=(.+)/;
 var userScore = regex.exec(scoreSrc)[1];
 $('#result').text(userScore)
 var apiUrl = `https://galvanize-leader-board.herokuapp.com/api/v1/leader-board`
-var game = "TRVA";
+var game = "underAttack";
 var scoresArr = [];
 
 var restartButton = document.getElementById('replay-button')
@@ -125,10 +125,30 @@ function openScoreForm(){
   form.addEventListener('submit',function(event){
     event.preventDefault()
     playersInputName = event.target.elements["user-name"].value
+    postHighScore(playersInputName)
     $(form).hide()
     highScoreHeader.innerText = "Congrats " + playersInputName + "!"
   })
 }
 
+function postHighScore(playersInputName){
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    mode: 'cors',
+    body: JSON.stringify({
+      game_name: "underAttack",
+      player_name: playersInputName,
+      score: userScore
+    })
+  }).then(function(response){
+    console.log('Request succeeded with JSON response', response);
+  }).catch(function(error){
+    console.log('Request failed', error);
+  });
+}
+
 showLeaderboard()
-checkScores(280)
+checkScores(userScore)

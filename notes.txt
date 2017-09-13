@@ -1,3 +1,24 @@
+fetch('https://davidwalsh.name/submit-json', {
+	method: 'post',
+	body: JSON.stringify({
+		email: document.getElementById('email').value
+		answer: document.getElementById('answer').value
+	})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div id="new-high-score">
   <h3 id="high-score-header">New High Score!</h3>
   <form id="high-score-form">
