@@ -24,7 +24,7 @@
 }
 
 #gameboard{
-  height: 450px;
+  height: 410px;
   display: flex;
   flex-direction: column;
 }
@@ -37,10 +37,6 @@
     to {
         top: 95%;
     }
-}
-
-#player-container {
-  height: 50px;
 }
 
 /*#usr{
@@ -57,9 +53,11 @@
 
 #game-floor{
   height: 20px;
-  width: 99.3%;
+  width: 99%;
   background-color: lightblue;
-  margin: -47px 0 0 4px;
+  margin: -24px 4px 0 4px;
+  display: flex;
+  flex-grow: 1;
 }
 
 $mobile: " (max-width: 770px)";
@@ -71,8 +69,8 @@ $mobile: " (max-width: 770px)";
 
 @media #{$mobile} {
   #usr{
-    margin: -112px 0 0 0;
-    font-size: 30px;
+    margin: -75px 0 0 0;
+    font-size: 45px;
   }
 }
 

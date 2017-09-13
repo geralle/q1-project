@@ -87,3 +87,7 @@ function gameOver(){
   clearInterval(gameInterval)
   window.open('scoreboard.html?a='+userScore,"_self")
 }
+
+window.setInterval(function() {
+  
+}, 100);

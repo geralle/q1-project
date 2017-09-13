@@ -1,7 +1,6 @@
 var scoreSrc = window.location.href
 var regex = /=(.+)/;
 var userScoreArr = regex.exec(scoreSrc);
-console.log(userScoreArr)
 if(userScoreArr===null){
   userScore = 0
 }else{
