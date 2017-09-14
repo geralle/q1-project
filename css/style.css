@@ -115,17 +115,21 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6); }
 
 #leaderboard-title {
-  text-align: center;
   background-color: rgba(143, 186, 212, 0.92);
   color: white;
-  height: 60px;
+  height: 80px;
   font-family: 'Open Sans', sans-serif;
-  padding: 11px 0 0 0; }
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 1; }
 
 #high-scores {
   display: flex;
   flex-direction: column;
-  border: 2px solid green; }
+  padding: 22px 0 22px 0;
+  order: 2; }
 
 #player-score-container {
   display: flex;
@@ -138,23 +142,44 @@
   width: 100%;
   margin: 0 0 0 0; }
 
-#column-header {
-  border: 2px solid red; }
-
 #players-ranking-header, #players-name-header, #players-score-header {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.25em;
-  padding: 5px; }
+  font-size: 1.25em; }
+
+#column-header, .score-row {
+  display: flex;
+  justify-content: center; }
 
 .score-row {
   padding: 5px; }
 
 .players-ranking, .players-name, .players-score {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.25em;
   padding: 5px; }
 
-.column {
-  border: 2px solid purple; }
-
-#column-header, .score-row {
+#new-high-score {
+  height: 110px;
+  width: 100%;
   display: flex;
-  justify-content: center; }
+  order: 0;
+  flex-direction: column;
+  padding: 10px 0 21px 0;
+  align-items: center; }
+
+#high-score-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 8px 0 0 45px; }
+
+#submit-button {
+  border-width: 0;
+  color: #5A9EC7;
+  background-color: white;
+  width: 94px;
+  font-size: 1em;
+  margin: 0px 46px 0 0;
+  padding: 0 0 0 0;
+  height: 30px;
+  border: .1px solid lightgrey; }
