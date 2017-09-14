@@ -1,7 +1,7 @@
 /*GAMEBOARD*/
 #title{
   font-family: 'Bangers', cursive;
-  font-size: 4em;
+  font-size: 4.5em;
   color: white;
   text-shadow:
     1px 0px 1px lightgrey, 0px 1px 1px lightgrey,
@@ -28,14 +28,19 @@
 #play-button{
   border-width: 0;
   border-radius: 2px;
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.44);
   color: #5A9EC7;
   background-color: white;
-  width: 100px;
+  width: 94px;
   font-size: 1em;
   margin: 12px 46px 0 0;
   padding: 0 0 0 0;
   height: 33px;
+}
+
+#play-button:active, #play-button:focus{
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+  outline:none;
 }
 
 #header-button-container p{
@@ -111,30 +116,43 @@ $mobile: " (max-width: 770px)";
 #replay-button{
   border-width: 0;
   border-radius: 2px;
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.44);
   color: #5A9EC7;
   background-color: white;
-  width: 100px;
+  width: 94px;
   font-size: 1em;
   margin: 12px 46px 0 0;
   padding: 0 0 0 0;
   height: 33px;
 }
 
-#high-scores{
-  display: flex;
-  flex-direction: column;
+#replay-button:active, #replay-button:focus{
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+  outline:none;
 }
 
 #leaderboard{
   padding: 0;
   display: flex;
-  /*justify-content: center;*/
-  border: 4px solid black;
-  /*border-top: 2px;*/
   width: 100%;
   flex-direction: column;
   height: 410px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+#leaderboard-title{
+  text-align: center;
+  background-color: rgba(143, 186, 212, 0.92);
+  color: white;
+  height: 60px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 11px 0 0 0;
+}
+
+#high-scores{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid green;
 }
 
 #player-score-container{
@@ -147,7 +165,33 @@ $mobile: " (max-width: 770px)";
 }
 
 #column-header, #score-row{
-  /*border: 2px solid black;*/
   width: 100%;
   margin: 0 0 0 0;
+}
+
+#column-header{
+  border:2px solid red;
+}
+
+#players-ranking-header, #players-name-header, #players-score-header{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.25em;
+  padding: 5px;
+}
+
+.score-row{
+  padding: 5px;
+}
+
+.players-ranking,.players-name,.players-score{
+  padding: 5px;
+}
+
+.column{
+  border: 2px solid purple;
+}
+
+#column-header,.score-row{
+  display: flex;
+  justify-content: center;
 }

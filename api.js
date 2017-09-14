@@ -48,7 +48,7 @@ function showLeaderboard(){
 
       var scoreRow = document.createElement('div')
       scoreRow.setAttribute('class','row')
-      scoreRow.setAttribute('id','score-row')
+      scoreRow.setAttribute('class','score-row')
       highScoresContainer.append(scoreRow)
 
       var rankDiv = document.createElement('div')
@@ -64,7 +64,7 @@ function showLeaderboard(){
       scoreRow.append(nameDiv)
 
       var scoreDiv = document.createElement('div')
-      scoreDiv.setAttribute('class','column col-2')
+      scoreDiv.setAttribute('class','column col-1')
       scoreDiv.setAttribute('id','players-score')
       scoreDiv.innerText = leaderboardScores
       scoreRow.append(scoreDiv)
