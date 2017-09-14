@@ -47,21 +47,25 @@ function showLeaderboard(){
       var highScoresContainer = document.getElementById('high-scores')
 
       var scoreRow = document.createElement('div')
-      scoreRow.setAttribute('class','row score-row')
+      scoreRow.setAttribute('class','row')
+      scoreRow.setAttribute('id','score-row')
       highScoresContainer.append(scoreRow)
 
       var rankDiv = document.createElement('div')
-      rankDiv.setAttribute('class','column col-1 players-ranking')
+      rankDiv.setAttribute('class','column col-1')
+      rankDiv.setAttribute('id','players-ranking')
       rankDiv.innerText = ranking
       scoreRow.append(rankDiv)
 
       var nameDiv = document.createElement('div')
-      nameDiv.setAttribute('class','column col-4 players-name')
+      nameDiv.setAttribute('class','column col-4')
+      nameDiv.setAttribute('id','players-name')
       nameDiv.innerText = leaderboardNames
       scoreRow.append(nameDiv)
 
       var scoreDiv = document.createElement('div')
-      scoreDiv.setAttribute('class','column col-1 players-score')
+      scoreDiv.setAttribute('class','column col-2')
+      scoreDiv.setAttribute('id','players-score')
       scoreDiv.innerText = leaderboardScores
       scoreRow.append(scoreDiv)
     }
@@ -92,7 +96,7 @@ function openScoreForm(){
 
   var highScoreHeader = document.createElement('h3')
   highScoreHeader.setAttribute('id','high-score-header')
-  highScoreHeader.innerText = "New High Score! " + userScore
+  highScoreHeader.innerText = "New High Score!"
   newScoreDiv.append(highScoreHeader)
 
   var highScoreForm = document.createElement('form')
@@ -109,6 +113,11 @@ function openScoreForm(){
   userInput.setAttribute('name','user-name')
   userNameInput.append(userInput)
 
+  var userFormScore = document.createElement('div')
+  userFormScore.setAttribute('id','user-score')
+  userFormScore.innerText = userScore
+  highScoreForm.append(userFormScore)
+
   var formButton = document.createElement('button')
   formButton.setAttribute('id','submit-button')
   formButton.innerText = "Submit"
@@ -119,16 +128,12 @@ function openScoreForm(){
   form.addEventListener('submit',function(event){
     event.preventDefault()
     playersInputName = event.target.elements["user-name"].value
-    if(playersInputName == ""){
-      alert("Please enter a name or Replay")
-    }else{
-      postHighScore(playersInputName)
-      $(form).hide()
-      highScoreHeader.innerText = "Congrats " + playersInputName + "!"
-      setTimeout(function(){
-        window.open('scoreboard.html',"_self")
-      },900)
-    }
+    postHighScore(playersInputName)
+    $(form).hide()
+    highScoreHeader.innerText = "Congrats " + playersInputName + "!"
+    setTimeout(function(){
+      window.open('scoreboard.html',"_self")
+    },900)
   })
 }
 
