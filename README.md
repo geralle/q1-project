@@ -15,7 +15,7 @@ Demo: https://point-grabber.firebaseapp.com/
 Walkthrough video: https://www.youtube.com/watch?v=YH44TNFrDRM
 
 ## Technologies
-* CJ R (Galvanize) Leaderboard
+* CJ R (Galvanize) Leaderboard API
 * HTML
 * CSS
 * JQuery
