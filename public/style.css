@@ -144,7 +144,8 @@
 
 #players-ranking-header, #players-name-header, #players-score-header {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.25em; }
+  font-size: 1.25em;
+  text-decoration: underline; }
 
 #column-header, .score-row {
   display: flex;

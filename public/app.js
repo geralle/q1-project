@@ -96,3 +96,5 @@ window.setInterval(function() {
     var blastZone = 0;
   }
 }, 100);
+
+console.log("App by Geralle Estes")
